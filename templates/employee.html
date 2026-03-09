@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel pracownika</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Dodaj wpis czasu pracy</h2>
+
+        <form method="post">
+            <div class="form-group">
+                <label for="user_id">Pracownik:</label>
+                <select name="user_id" id="user_id" required>
+                    <option value="">Wybierz pracownika</option>
+                    {% for u in users %}
+                        <option value="{{u.id}}">{{u.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="machine_id">Maszyna:</label>
+                <select name="machine_id" id="machine_id" required>
+                    <option value="">Wybierz maszynę</option>
+                    {% for m in machines %}
+                        <option value="{{m.id}}">{{m.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="start">Godzina rozpoczęcia:</label>
+                <input type="time" name="start" id="start" required>
+            </div>
+
+            <div class="form-group">
+                <label for="end">Godzina zakończenia:</label>
+                <input type="time" name="end" id="end" required>
+            </div>
+
+            <div class="form-group">
+                <label for="items">Liczba wyprodukowanych elementów:</label>
+                <input type="number" name="items" id="items" min="0" required>
+            </div>
+
+            <button type="submit">Zapisz wpis</button>
+        </form>
+
+        <a href="/" class="back-link">← Powrót do strony głównej</a>
+    </div>
+</body>
+</html>

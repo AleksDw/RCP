@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel pracodawcy</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 8px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .efficiency-high { color: green; font-weight: bold; }
+        .efficiency-medium { color: orange; font-weight: bold; }
+        .efficiency-low { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Statystyki pracy</h2>
+
+    <table>
+        <tr>
+            <th>Pracownik</th>
+            <th>Maszyna</th>
+            <th>Start</th>
+            <th>Koniec</th>
+            <th>Elementy</th>
+            <th>Wydajność</th>
+        </tr>
+        {% for log in logs %}
+            <tr>
+                <td>{{log.user_name}}</td>
+                <td>{{log.machine_name}}</td>
+                <td>{{log.start_time}}</td>
+                <td>{{log.end_time}}</td>
+                <td>{{log.produced_items}}</td>
+                <td class="
+                    {% if log.efficiency >= 100 %}
+                        efficiency-high
+                    {% elif log.efficiency >= 70 %}
+                        efficiency-medium
+                    {% else %}
+                        efficiency-low
+                    {% endif %}
+                ">
+                    {{log.efficiency}}%
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p><a href="/">Powrót do strony głównej</a></p>
+</body>
+</html>
