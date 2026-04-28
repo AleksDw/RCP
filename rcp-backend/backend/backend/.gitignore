@@ -1,2 +1,5 @@
 env/
 backend/__pycache__/
+backend/backend/accounts/__pycache__/
+backend/backend/accounts/migrations/__pycache__/
+backend/backend/backend/__pycache__/
