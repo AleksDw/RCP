@@ -13,7 +13,7 @@ export default function LoginPage() {
           </p>
         </div>
         
-        {/* Odpalamy czysty formularz bez żadnych propów ról! */}
+        {}
         <LoginForm />
         
       </div>

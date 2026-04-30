@@ -24,7 +24,14 @@ export default function LoginForm() {
 
       const fullName = `${response.first_name} ${response.last_name}`.trim();
       localStorage.setItem('user_name', fullName || response.username);
-      localStorage.setItem('user_role', response.role);
+      
+      if (response.access) {
+        localStorage.setItem('access', response.access);
+      } else if (response.token) { 
+        localStorage.setItem('access', response.token); 
+      }
+
+      localStorage.setItem('role', response.role);
 
       if (response.role === "employee") {
         router.push("/dashboard/employee");

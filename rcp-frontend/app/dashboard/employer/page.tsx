@@ -1,7 +1,9 @@
 import Navbar from "../Navbar";
+import RoleGuard from "@/app/components/RoleGuard";
 export default function EmployerDashboard() {
   return (
     <>
+    <RoleGuard allowedRoles={['employer']}>
     <Navbar/>
     <div className="min-h-screen bg-blue-50 dark:bg-neutral-950 p-8">
       <div className="max-w-6xl mx-auto">
@@ -28,6 +30,7 @@ export default function EmployerDashboard() {
         </div>
       </div>
     </div>
+    </RoleGuard>
     </>
   );
 }
