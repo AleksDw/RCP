@@ -24,3 +24,8 @@ class ElementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Element
         fields = ['id', 'element_name', 'id_type', 'estimated_time_per_item']
+
+    def validate_estimated_time_per_item(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("Szacowany czas musi być liczbą całkowitą większą od 0.")
+        return value

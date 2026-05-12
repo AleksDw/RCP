@@ -6,16 +6,20 @@ from data.models.machine import Machine
 from data.models.machineType import MachineType
 from data.models.element import Element
 
+from .permissions import (
+    IsTechnicalUser,
+    IsEmployeeUser,
+)
 from .serializers import (
     TimeEntrySerializer,
     MachineSerializer,
     MachineTypeSerializer,
-    ElementSerializer
+    ElementSerializer,
 )
 
 class TimeEntryViewSet(viewsets.ModelViewSet):
     serializer_class = TimeEntrySerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsEmployeeUser]
     
     def get_queryset(self):
         user = self.request.user
@@ -27,14 +31,14 @@ class TimeEntryViewSet(viewsets.ModelViewSet):
 class MachineTypeViewSet(viewsets.ModelViewSet):
     queryset = MachineType.objects.all()
     serializer_class = MachineTypeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsTechnicalUser]
 
 class MachineViewSet(viewsets.ModelViewSet):
     queryset = Machine.objects.all()
     serializer_class = MachineSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsTechnicalUser]
 
 class ElementViewSet(viewsets.ModelViewSet):
     queryset = Element.objects.all()
     serializer_class = ElementSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsTechnicalUser]
