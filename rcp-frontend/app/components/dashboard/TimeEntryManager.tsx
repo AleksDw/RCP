@@ -147,6 +147,20 @@ export default function TimeEntryManager() {
     return allMachines.find(m => m.id === id)?.machine_name || `ID: ${id}`;
   };
 
+  // Pomocnicza funkcja formatowania daty ze stringa
+  const formatDate = (date: string) => {
+  const d = new Date(date);
+
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const year = d.getUTCFullYear();
+
+  const hours = String(d.getUTCHours()).padStart(2, '0');
+  const minutes = String(d.getUTCMinutes()).padStart(2, '0');
+
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
+};
+
   return (
     <>
       {error && <p className="text-red-500 mb-4">{error}</p>}
@@ -274,8 +288,8 @@ export default function TimeEntryManager() {
                       {getMachineName(entry.machine)}
                     </td>
                     <td className="px-4 py-3">{entry.amount_of_elements}</td>
-                    <td className="px-4 py-3">{new Date(entry.start_time).toLocaleString('pl-PL')}</td>
-                    <td className="px-4 py-3">{entry.end_time ? new Date(entry.end_time).toLocaleString('pl-PL') : '-'}</td>
+                    <td className="px-4 py-3">{formatDate(entry.start_time)}</td>
+                    <td className="px-4 py-3">{entry.end_time ? formatDate(entry.end_time) : '-'}</td>
                     <td className="px-4 py-3 flex justify-end gap-2">
                       <button onClick={() => handleEditClick(entry)} className="text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-1 rounded">Edytuj</button>
                       <button onClick={() => handleDelete(entry.id)} className="text-xs bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1 rounded">Usuń</button>

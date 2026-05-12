@@ -22,11 +22,11 @@ dodanie/edycja/usuniecie user_maszyna
 dodanie/edycja/usuniecie usera
 sprawdzenie timeentry na podstawie filtrów
 
-widok technika
-dodanie/edycja/usuniecie typu_maszyny
-dodanie/edycja/usuniecie maszyny
-dodanie/edycja/usuniecie elementu
+-widok technika
+-dodanie/edycja/usuniecie typu_maszyny
+-dodanie/edycja/usuniecie maszyny
+-dodanie/edycja/usuniecie elementu
 
-widok pracownika
-dodanie/edycja/usuniecie timeentry
-sprawdzenie swoich timeentry na podstawie filtrów
+-widok pracownika
+-dodanie/edycja/usuniecie timeentry
+-sprawdzenie swoich timeentry (KIEDYŚ SIĘ DODA: na podstawie filtrów)
