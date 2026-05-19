@@ -21,12 +21,14 @@ widok pracodawcy
 dodanie/edycja/usuniecie user_maszyna
 dodanie/edycja/usuniecie usera
 sprawdzenie timeentry na podstawie filtrów
+wyliczona wydajność dla każdego pracownika zależnie czy dzień miesiąc czy dany timeentry
+
 
 widok technika
 dodanie/edycja/usuniecie typu_maszyny
 dodanie/edycja/usuniecie maszyny
 dodanie/edycja/usuniecie elementu
 
-widok pracownika
-dodanie/edycja/usuniecie timeentry
-sprawdzenie swoich timeentry na podstawie filtrów
+X widok pracownika
+X dodanie/edycja/usuniecie timeentry
+~ sprawdzenie swoich timeentry na podstawie filtrów
