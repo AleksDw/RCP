@@ -31,14 +31,14 @@ class TimeEntryViewSet(viewsets.ModelViewSet):
 class MachineTypeViewSet(viewsets.ModelViewSet):
     queryset = MachineType.objects.all()
     serializer_class = MachineTypeSerializer
-    permission_classes = [IsAuthenticated, IsTechnicalUser]
+    permission_classes = [IsAuthenticated]
 
 class MachineViewSet(viewsets.ModelViewSet):
     queryset = Machine.objects.all()
     serializer_class = MachineSerializer
-    permission_classes = [IsAuthenticated, IsTechnicalUser]
+    permission_classes = [IsAuthenticated]
 
 class ElementViewSet(viewsets.ModelViewSet):
     queryset = Element.objects.all()
     serializer_class = ElementSerializer
-    permission_classes = [IsAuthenticated, IsTechnicalUser]
+    permission_classes = [IsAuthenticated]
