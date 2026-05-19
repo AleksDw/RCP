@@ -6,10 +6,6 @@ from data.models.machine import Machine
 from data.models.machineType import MachineType
 from data.models.element import Element
 
-from .permissions import (
-    IsTechnicalUser,
-    IsEmployeeUser,
-)
 from .serializers import (
     TimeEntrySerializer,
     MachineSerializer,
@@ -19,10 +15,12 @@ from .serializers import (
 
 class TimeEntryViewSet(viewsets.ModelViewSet):
     serializer_class = TimeEntrySerializer
-    permission_classes = [IsAuthenticated, IsEmployeeUser]
+    permission_classes = [IsAuthenticated]
     
     def get_queryset(self):
         user = self.request.user
+        if user.role == 'employer':
+            return TimeEntry.objects.all()
         return TimeEntry.objects.filter(user=user)
         
     def perform_create(self, serializer):
