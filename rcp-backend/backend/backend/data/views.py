@@ -19,9 +19,16 @@ class TimeEntryViewSet(viewsets.ModelViewSet):
     
     def get_queryset(self):
         user = self.request.user
+
+        queryset = TimeEntry.objects.select_related(
+            'user',
+            'machine',
+            'element'
+        )
+        
         if user.role == 'employer':
-            return TimeEntry.objects.all()
-        return TimeEntry.objects.filter(user=user)
+            return queryset.all()
+        return queryset.filter(user=user)
         
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

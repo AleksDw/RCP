@@ -10,7 +10,16 @@ interface TimeEntry {
   end_time: string | null;
   machine: number;
   amount_of_elements: number;
-  element?: number; // Add element field if it exists in your backend
+  element?: number;
+
+  // NEW
+  user_name?: string;
+  machine_name?: string;
+  element_name?: string;
+
+  expected_minutes?: number | null;
+  actual_minutes?: number | null;
+  efficiency?: number | null;
 }
 
 interface MachineType {
@@ -183,11 +192,6 @@ export default function TimeEntryManager() {
     setEstimatedTime(0);
   };
 
-  // Pomocnicza nazwa maszyny w tabeli
-  const getMachineName = (id: number) => {
-    return allMachines.find(m => m.id === id)?.machine_name || `ID: ${id}`;
-  };
-
   // Pomocnicza funkcja formatowania daty ze stringa
   const formatDate = (date: string) => {
   const d = new Date(date);
@@ -200,10 +204,6 @@ export default function TimeEntryManager() {
   const minutes = String(d.getUTCMinutes()).padStart(2, '0');
 
   return `${day}/${month}/${year} ${hours}:${minutes}`;
-  };
-  // Pomocnicza nazwa elementu
-  const getElementName = (id: number) => {
-    return allElements.find(e => e.id === id)?.element_name || `ID: ${id}`;
   };
 
   // Formatowanie czasu w minutach i godzinach
@@ -383,10 +383,10 @@ export default function TimeEntryManager() {
                 {entries.map((entry) => (
                   <tr key={entry.id} className="border-b border-gray-100 dark:border-neutral-800 hover:bg-gray-50 dark:hover:bg-neutral-800/50">
                     <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
-                      {getMachineName(entry.machine)}
+                      {entry.machine_name}
                     </td>
                     <td className="px-4 py-3">
-                      {entry.element ? getElementName(entry.element) : '-'}
+                      {entry.element ? entry.element_name : '-'}
                     </td>
                     <td className="px-4 py-3">{entry.amount_of_elements}</td>
                     <td className="px-4 py-3">{formatDate(entry.start_time)}</td>

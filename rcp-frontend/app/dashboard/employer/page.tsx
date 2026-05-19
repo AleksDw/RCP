@@ -1,5 +1,6 @@
 import Navbar from "../Navbar";
 import RoleGuard from "@/app/components/RoleGuard";
+import TimeEntryEmployerManager from "@/app/components/dashboard/TimeEntryEmployerManager";
 import TimeEntryManager from "@/app/components/dashboard/TimeEntryManager";
 export default function EmployeeDashboard() {
   return (
@@ -10,7 +11,7 @@ export default function EmployeeDashboard() {
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
             Panel Pracodawcy
           </h1>
-          <TimeEntryManager />
+          <TimeEntryEmployerManager />
           
         </div>
       </div>

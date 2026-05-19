@@ -20,7 +20,7 @@ id id_usera         id_maszyny
 widok pracodawcy
 dodanie/edycja/usuniecie user_maszyna
 dodanie/edycja/usuniecie usera
-sprawdzenie timeentry na podstawie filtrów
+-sprawdzenie timeentry (KIEDYŚ SIĘ DODA: na podstawie filtrów)
 wyliczona wydajność dla każdego pracownika zależnie czy dzień miesiąc czy dany timeentry
 
 
