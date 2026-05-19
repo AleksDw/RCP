@@ -4,11 +4,13 @@ from rest_framework.permissions import IsAuthenticated
 from data.models.timeEntry import TimeEntry
 from data.models.machine import Machine
 from data.models.machineType import MachineType
+from data.models.element import Element
 
 from .serializers import (
     TimeEntrySerializer,
     MachineSerializer,
-    MachineTypeSerializer
+    MachineTypeSerializer,
+    ElementSerializer
 )
 
 class TimeEntryViewSet(viewsets.ModelViewSet):
@@ -17,6 +19,8 @@ class TimeEntryViewSet(viewsets.ModelViewSet):
     
     def get_queryset(self):
         user = self.request.user
+        if user.role == 'employer':
+            return TimeEntry.objects.all()
         return TimeEntry.objects.filter(user=user)
         
     def perform_create(self, serializer):
@@ -29,3 +33,8 @@ class MachineTypeViewSet(viewsets.ReadOnlyModelViewSet):
 class MachineViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Machine.objects.all()
     serializer_class = MachineSerializer
+    
+class ElementViewSet(viewsets.ModelViewSet):
+    queryset = Element.objects.all()
+    serializer_class = ElementSerializer
+    permission_classes = [IsAuthenticated]
