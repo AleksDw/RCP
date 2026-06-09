@@ -40,11 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/rcp-backend/backend/env
-/rcp-backend/backend/backend/__pycache__/*
-/rcp-backend/backend/backend/accounts/__pycache__/*
-/rcp-backend/backend/backend/accounts/migrations/__pycache__/*
-/rcp-backend/backend/backend/backend/__pycache__/
-/rcp-backend/backend/backend/data/__pycache__/*
-/rcp-backend/backend/backend/data/migrations/__pycache__/*
-/rcp-backend/backend/backend/data/models/__pycache__/*
+/rcp-backend/env
+/rcp-backend/__pycache__/*
+/rcp-backend/accounts/__pycache__/*
+/rcp-backend/accounts/migrations/__pycache__/*
+/rcp-backend/backend/__pycache__/
+/rcp-backend/data/__pycache__/*
+/rcp-backend/data/migrations/__pycache__/*
+/rcp-backend/data/models/__pycache__/*
